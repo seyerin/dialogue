@@ -2,48 +2,86 @@ import { useState } from "react";
 
 import Header from "./header";
 function Calendar(props) {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const nowDay = currentDate.getDay();
-  const nowDate = currentDate.getDate();
-  const [nowMonth, setNowMonth] = useState(currentDate.getMonth());
-  const nowYears = currentDate.getFullYear();
+  const [curruentDate, setCurrentDate] = useState(new Date());
+  const nowYears = curruentDate.getFullYear();
+  const nowMonth = curruentDate.getMonth() + 2;
 
-  const week = ["일", "월", "화", "수", "목", "금", "토"];
-  const lastDate = new Date(nowYears, nowMonth + 1, 0).getDate();
+  const monthStart = new Date(
+    curruentDate.getFullYear(),
+    curruentDate.getMonth() + 1,
+    1
+  ).getDay();
 
-  const days = [[], [], [], [], [], [], []];
+  console.log(monthStart);
+
+  const monthEnd = new Date(
+    curruentDate.getFullYear(),
+    curruentDate.getMonth() + 2,
+    0
+  );
+
+  const endDay = monthEnd.getDate();
+  const endDay2 = monthEnd.getDay();
+
+  const startDate = new Date(
+    curruentDate.getFullYear(),
+    curruentDate.getMonth() + 1,
+    -monthStart + 1
+  );
+  // console.log(monthStart);
+
+  const endDate = new Date(
+    curruentDate.getFullYear(),
+    curruentDate.getMonth() + 2,
+    6 - endDay2
+  ).getDate();
+
+  const rows = [[], [], [], [], []];
+  let day = [];
   let counter = 0;
-  let counter2 = 1;
-  for (let i = 1; i <= lastDate; i++) {
-    days[counter2].push(i);
-    counter++;
-    if (counter == 7) {
-      counter2++;
-      counter = 0;
-    }
-  }
+  let counter2 = 0;
+  // console.log(endDate);
 
+  const date = ["SUN", "MON", "THU", "WED", "THRS", "FRI", "SET"];
+  const days = [];
+  for (let i = -monthStart + 1; i <= endDay + endDate; i++) {
+    day.push(
+      new Date(curruentDate.getFullYear(), curruentDate.getMonth(), i).getDate()
+    );
+  }
+  console.log(day);
+
+  // for (let i = 0; i < day.length; i++) {
+  //   if (counter2 == 7) {
+  //     counter++;
+  //     counter2 = 0;
+  //   }
+  //   counter2++;
+  //   rows[counter].push(day[i]);
+  // }
+
+  // console.log(rows);
+  for (let i = 0; i < 7; i++) {
+    days.push(<th key={i}>{date[i]}</th>);
+  }
   return (
     <>
       <Header />
       <main>
         <div className="mainHeader">
           <span className="year">{nowYears}</span>
-          <span className="month">{nowMonth + 1}</span>
+          <br />
+          <span className="month">{nowMonth}</span>
         </div>
         <table>
           <thead>
-            <tr>
-              {week.map((day, i) => (
-                <th key={i}>{day}</th>
-              ))}
-            </tr>
+            <tr>{days}</tr>
           </thead>
           <tbody>
-            {days.map((i, j) => (
+            {rows.map((i, j) => (
               <tr key={j}>
-                {i.map((a, b) => (
-                  <td key={b}>{a}</td>
+                {i.map((x, y) => (
+                  <td key={y}>{x}</td>
                 ))}
               </tr>
             ))}
