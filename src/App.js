@@ -1,7 +1,7 @@
-import Calendar from "./jsx/calendar";
+import Calender from "./jsx/calender";
 
 function App() {
-  return <Calendar />;
+  return <Calender />;
 }
 
 export default App;

@@ -1,3 +1,5 @@
+import "../css/header.css";
+
 function Header() {
   return (
     <>
@@ -6,9 +8,9 @@ function Header() {
           <span>DIALOGUE</span>
         </div>
         <nav>
-          <span>달력</span>
-          <span>일기</span>
-          <span>할 일</span>
+          <span>CALENDER</span>
+          <span>DIRAY</span>
+          <span>TODO</span>
         </nav>
       </header>
     </>

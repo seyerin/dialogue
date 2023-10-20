@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  height: 100vh;
+}
+#root {
+  width: 100%;
+  height: 100%;
+}
+main {
+  width: 100%;
+  height: 89%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mainHeader {
+  margin-top: 2vh;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.month {
+  font-size: 40px;
+  font-weight: 900;
+}
+.year {
+  font-size: 18px;
+  position: absolute;
+  bottom: 9.5vh;
+}
+.monthEng {
+  margin-top: -1vh;
+  font-size: 15px;
+  font-weight: 600;
+}
+input {
+  margin: 0 2vw 0 2vw;
+  width: 2vw;
+  height: 2vw;
+  border-radius: 100%;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: white;
+  cursor: pointer;
+}
+table {
+  width: 60%;
+  height: 85%;
+}
+thead {
+  width: 100%;
+  height: 10%;
+}
+th {
+  width: 10%;
+  height: 100%;
+}
+th::after {
+  content: "";
+  width: 80%;
+  height: 1%;
+  border-bottom: 1px solid black;
+  display: block;
+  position: relative;
+  top: 2vh;
+  left: 1vw;
+}
+tbody {
+  width: 100%;
+  height: 90%;
+}
+tbody tr {
+  width: 100%;
+  height: 15%;
+}
+td {
+  width: 14%;
+  height: 15%;
+  border: 1px solid rgb(0, 0, 0);
+  border-top: none;
+  border-right: none;
+}
+tr td:last-child {
+  border-right: 1px solid black;
+}
+td span {
+  margin-left: 0.5vw;
+  display: block;
+  position: relative;
+  bottom: 3.5vh;
+}
+.today {
+  font-weight: 900;
+  text-decoration: underline;
+}
+.sun {
+  color: red;
+}
+.set {
+  color: blue;
+}
