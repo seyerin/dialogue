@@ -9,7 +9,7 @@ function Header() {
         </div>
         <nav>
           <span>CALENDER</span>
-          <span>DIRAY</span>
+          <span>DIARY</span>
           <span>TODO</span>
         </nav>
       </header>

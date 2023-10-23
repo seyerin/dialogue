@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./header";
-import "../css/calender.css";
+import Main from "../css/StyleCalenderMain";
+import CalenderHeader from "./CalenderHeader";
 
 function Calender(props) {
   const [nextMonth, setNextMonth] = useState(0);
@@ -24,20 +25,6 @@ function Calender(props) {
     42 - endDay - monthStart
   ).getDate();
 
-  const month = [
-    "JANUARY",
-    "FEBRUARY",
-    "MARCH",
-    "APRIL",
-    "MAY",
-    "JUNE",
-    "JULY",
-    "AUGUST",
-    "SEPTEMBER",
-    "OCTOBER",
-    "NOVEMBER",
-    "DECEMBER",
-  ];
   const rows = [[], [], [], [], [], []];
   let counter = 0;
   let counter2 = 0;
@@ -56,33 +43,28 @@ function Calender(props) {
   for (let i = 0; i < 7; i++) {
     days.push(<th key={i}>{date[i]}</th>);
   }
+
+  function getClassName(x) {
+    if (x.getDate() == curruentDate.getDate() && nextMonth == 0) {
+      return "today";
+    } else if (x.getDay() == 0) {
+      return "sun";
+    } else if (x.getDay() == 6) {
+      return "set";
+    } else {
+      return "";
+    }
+  }
+
   return (
     <>
       <Header />
-      <main>
-        <div className="mainHeader">
-          <span className="year">{monthEnd.getFullYear()}</span>
-          <div>
-            <input
-              type="button"
-              value="<"
-              onClick={() => {
-                setNextMonth((prev) => prev - 1);
-                setPreveMonth((prev) => prev - 1);
-              }}
-            />
-            <span className="month">{monthEnd.getMonth() + 1}</span>
-            <input
-              type="button"
-              value=">"
-              onClick={() => {
-                setNextMonth((prev) => prev + 1);
-                setPreveMonth((prev) => prev + 1);
-              }}
-            />
-          </div>
-          <span className="monthEng">{month[monthEnd.getMonth()]}</span>
-        </div>
+      <Main>
+        <CalenderHeader
+          setNextMonth={setNextMonth}
+          setPreveMonth={setPreveMonth}
+          monthEnd={monthEnd}
+        />
         <table>
           <thead>
             <tr>{days}</tr>
@@ -91,18 +73,7 @@ function Calender(props) {
             {rows.map((i, j) => (
               <tr key={j}>
                 {i.map((x, y) => (
-                  <td
-                    key={y}
-                    className={
-                      x.getDate() == curruentDate.getDate() && nextMonth == 0
-                        ? "today"
-                        : x.getDay() == 0
-                        ? "sun"
-                        : x.getDay() == 6
-                        ? "set"
-                        : ""
-                    }
-                  >
+                  <td key={y} className={getClassName(x)}>
                     <span>{x.getDate()}</span>
                   </td>
                 ))}
@@ -110,7 +81,7 @@ function Calender(props) {
             ))}
           </tbody>
         </table>
-      </main>
+      </Main>
     </>
   );
 }
