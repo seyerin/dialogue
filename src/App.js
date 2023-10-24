@@ -1,10 +1,12 @@
-import Calender from "./jsx/calender";
-import Diary from "./jsx/diary";
+import Calender from "./jsx/Calender";
+import Diary from "./jsx/Diary";
 import "./css/header.css";
+import Todo from "./jsx/Todo";
 function App() {
   return (
     <>
-      <Diary />
+      <Todo />
+      {/* <Diary /> */}
       {/* <Calender /> */}
     </>
   );

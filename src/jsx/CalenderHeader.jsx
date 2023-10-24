@@ -22,7 +22,7 @@ function CalenderHeader(props) {
         <div>
           <input
             type="button"
-            value="<"
+            value="＜"
             onClick={() => {
               props.setNextMonth((prev) => prev - 1);
               props.setPreveMonth((prev) => prev - 1);
@@ -31,7 +31,7 @@ function CalenderHeader(props) {
           <span className="month">{props.monthEnd.getMonth() + 1}</span>
           <input
             type="button"
-            value=">"
+            value="＞"
             onClick={() => {
               props.setNextMonth((prev) => prev + 1);
               props.setPreveMonth((prev) => prev + 1);
