@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 const StyleDiary = styled.main`
   width: 100%;
-  height: 90%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .diary {
     width: 80%;
     height: 90%;
@@ -21,8 +22,8 @@ const StyleDiary = styled.main`
     align-items: center;
   }
   .diary p input {
-    margin: 0 0 0 1vw;
-    width: 90%;
+    margin: 0 0 0 0.5vw;
+    width: 95%;
     height: 3vh;
     font-size: 15px;
     border: none;
@@ -39,6 +40,22 @@ const StyleDiary = styled.main`
     font-size: 15px;
     resize: none;
     outline: none;
+  }
+  .btnBox {
+    width: 79.7%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+  }
+  button {
+    margin-left: 0.5vw;
+    width: 5vw;
+    height: 5vh;
+    border: 1px solid black;
+    outline: none;
+    background-color: rgba(240, 248, 255, 0);
+    cursor: pointer;
   }
 `;
 

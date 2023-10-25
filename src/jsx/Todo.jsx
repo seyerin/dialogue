@@ -32,8 +32,6 @@ function Todo(props) {
                 setToDo={setTodo}
                 todo={todo}
                 num={t.key}
-                // className={className ? "delete" : ""}
-                // setClass={setClassname}
               />
             ))}
           </div>
