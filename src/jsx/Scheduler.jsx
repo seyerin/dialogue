@@ -1,3 +1,4 @@
+import RightSide from "./SchedulerRightSide";
 function Scheduler() {
   return (
     <>
@@ -22,6 +23,7 @@ function Scheduler() {
             </div>
           </form>
         </section>
+        <RightSide />
       </main>
     </>
   );

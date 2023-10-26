@@ -6,8 +6,8 @@ import Scheduler from "./jsx/Scheduler";
 function App() {
   return (
     <>
-      <Scheduler />
-      {/* <Todo /> */}
+      {/* <Scheduler /> */}
+      <Todo />
       {/* <Diary /> */}
       {/* <Calender /> */}
     </>
