@@ -1,12 +1,21 @@
 import styled from "styled-components";
 
-const StyleToDo = styled.div`
+const StyleToDo = styled.main`
   width: 100%;
-  height: 100%;
+  height: 90%;
+  display: flex;
 
-  form {
-    width: 25%;
-    height: 65%;
+  .toDoSection {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: wheat; */
+  }
+  .toDoForm {
+    width: 60%;
+    height: 75%;
     border: 2px solid black;
     display: flex;
     flex-direction: column;

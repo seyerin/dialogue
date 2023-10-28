@@ -3,13 +3,12 @@ import styled from "styled-components";
 const StyleToDoForm = styled.div`
   margin-top: 1vh;
   width: 21vw;
-  height: 5.5hv;
+  height: 5.5vh;
   border: 2px solid black;
   color: black;
   font-size: 15px;
   display: flex;
   align-items: center;
-  /* background-color: tan; */
 
   p {
     width: 80%;

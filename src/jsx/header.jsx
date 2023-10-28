@@ -1,20 +1,34 @@
 import "../css/header.css";
+import styled from "styled-components";
+
+import {
+  useNavigate,
+  BrowserRouter,
+  Route,
+  Routes,
+  Link,
+} from "react-router-dom";
 
 function Header() {
   return (
     <>
       <header>
         <div className="logo">
-          <span>DIALOGUE</span>
+          <LinkItem to="/">DIALOGUE</LinkItem>
         </div>
         <nav>
-          <span>CALENDER</span>
-          <span>DIARY</span>
-          <span>TODO</span>
+          <LinkItem to="/">CALENDER</LinkItem>
+          <LinkItem to="/Diary">DIARY</LinkItem>
+          <LinkItem to="/Todo">TODO</LinkItem>
         </nav>
       </header>
     </>
   );
 }
+
+const LinkItem = styled(Link)`
+  color: black;
+  text-decoration: none;
+`;
 
 export default Header;

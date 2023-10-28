@@ -1,5 +1,7 @@
 import ToDOList from "./TodoForm";
 import StyleToDo from "../css/StyleToDo";
+import Scheduler from "./Scheduler";
+import Header from "./Header";
 const { useState } = require("react");
 
 function Todo(props) {
@@ -22,27 +24,31 @@ function Todo(props) {
   };
   return (
     <>
+      <Header />
       <StyleToDo>
-        <form action="">
-          <div className="todoBox">
-            {todo.map((t) => (
-              <ToDOList
-                toDo={t.toDo}
-                key={t.key}
-                setToDo={setTodo}
-                todo={todo}
-                num={t.key}
-              />
-            ))}
-          </div>
-          <input
-            type="text"
-            placeholder="write your todo"
-            className="toDoInput"
-            onKeyPress={enterEvent}
-            maxLength={16}
-          />
-        </form>
+        <section className="toDoSection">
+          <form action="" className="toDoForm">
+            <div className="todoBox">
+              {todo.map((t) => (
+                <ToDOList
+                  toDo={t.toDo}
+                  key={t.key}
+                  setToDo={setTodo}
+                  todo={todo}
+                  num={t.key}
+                />
+              ))}
+            </div>
+            <input
+              type="text"
+              placeholder="write your todo"
+              className="toDoInput"
+              onKeyPress={enterEvent}
+              maxLength={16}
+            />
+          </form>
+        </section>
+        <Scheduler />
       </StyleToDo>
     </>
   );
