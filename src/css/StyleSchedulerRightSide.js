@@ -18,12 +18,19 @@ const Style = styled.section`
     /* z-index: 3; */
     /* background-color: yellowgreen; */
   }
-  input[type="range"] {
+  input {
     margin-top: 0.5vh;
     width: 85%;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* top: 0; */
     left: 2.5vw;
     /* z-index: 1; */
+  }
+  .click {
+    background-color: blue;
   }
 `;
 
