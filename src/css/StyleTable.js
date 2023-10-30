@@ -21,10 +21,15 @@ const TableLine = styled.div`
     top: 0;
     z-index: 2;
   }
+  ul {
+    display: flex;
+    background-color: rgba(240, 248, 255, 0);
+  }
   .timeData {
     width: 35px;
     height: 23px;
     position: relative;
+    /* left: 0.5vw; */
     /* background-color: yellowgreen; */
   }
   .timeData::after {

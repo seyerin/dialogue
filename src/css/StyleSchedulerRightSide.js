@@ -18,7 +18,7 @@ const Style = styled.section`
     /* z-index: 3; */
     /* background-color: yellowgreen; */
   }
-  input {
+  .input {
     margin-top: 0.5vh;
     width: 85%;
     position: absolute;

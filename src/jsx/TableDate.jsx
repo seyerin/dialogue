@@ -1,73 +1,55 @@
 import { useEffect, useState } from "react";
 import "../css/StyleTable";
 import TableLine from "../css/StyleTable";
-import TimeData from "./Data";
 
 function Table(props) {
-  const arr2 = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-  ];
-  const [study, setStudy] = useState(
-    `${
-      JSON.parse(localStorage.getItem("change"))
-        ? JSON.parse(localStorage.getItem("change"))
-        : arr2
-    }`
-  );
-  // console.log(JSON.parse(localStorage.getItem("change")));
-  useEffect(() => {
-    localStorage.setItem("change", JSON.stringify(study));
-  }, [study]);
-  // console.log(study);
-  const arr = [10, 20, 30, 40, 50, 60];
+  const TimeData = (props) => {
+    const [time, setTime] = useState(false);
+    const [study, setStudy] = useState(
+      () => JSON.parse(localStorage.getItem("arr")) || []
+    );
+    useEffect(() => {
+      // if (study == []) {
+      //   localStorage.setItem("arr", JSON.stringify([study]));
+      // } else {
+      localStorage.setItem("arr", JSON.stringify([...study]));
+      // }
+    }, [study]);
+
+    return (
+      <>
+        <div
+          className={"timeData"}
+          onClick={(e) => {
+            setTime((prev) => !prev);
+
+            console.log(study);
+            setStudy((prev) => {
+              let temp = [...prev];
+              temp.push([props.y, props.x]); // [0, 1, 12,[]]] <= push 맞음
+              return temp;
+            });
+            // for (let j = 0; j < 1; j++) { <-- y
+            //   for (let i = 1; i < 7; i++) { <-- x
+            //     // console.log(
+            //     e.target.parentNode.parentNode.children[j].children[i].className =
+            //       "timeData click";
+            //     // );
+            //   }
+            // }
+            // console.log(JSON.parse(localStorage.getItem("arr")));
+          }}
+        ></div>
+      </>
+    );
+  };
+  const arr = [1, 2, 3, 4, 5, 6];
   return (
     <TableLine>
       <span>{props.time}</span>
       {arr.map((x) => (
-        <TimeData key={x} y={props.y} x={x} setStudy={setStudy} study={study} />
+        <TimeData key={x} y={props.y} x={x} />
       ))}
-      {/* {arr2.map((x, y) => ( */}
-      <input
-        type="range"
-        min={0}
-        max={60}
-        step={10}
-        onChange={(e) => {
-          setStudy(JSON.parse(localStorage.getItem("change")));
-          setStudy((prev) => {
-            let temp = [...prev];
-            temp[props.y] = [e.target.value];
-            // console.log(temp);
-            console.log("clicked" + e.target.value);
-            return temp;
-          });
-          // console.log(study);
-        }}
-      />
-      {/* ))} */}
     </TableLine>
   );
 }
