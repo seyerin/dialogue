@@ -46,7 +46,10 @@ const TableLine = styled.div`
   }
   /* .timeData:last-child {
     border-right: 1px solid black;
+  } 
+  /* .timeData:hover {
+    background-color: gray;
   } */
 `;
 
-export default TableLine;
+// export default TableLine;
