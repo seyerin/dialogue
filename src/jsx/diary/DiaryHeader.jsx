@@ -1,4 +1,4 @@
-import StyleDiaryHeader from "../css/StyleDiaryHeader";
+import StyleDiaryHeader from "../../css/diary/StyleDiaryHeader";
 function DiaryHeader() {
   return (
     <StyleDiaryHeader className="inpo">

@@ -1,8 +1,7 @@
-import Calender from "./jsx/Calender";
-import Diary from "./jsx/Diary";
+import Calender from "./jsx/calender/Calender";
+import Diary from "./jsx/diary/Diary";
 import "./css/header.css";
-import Todo from "./jsx/Todo";
-import Scheduler from "./jsx/Scheduler";
+import ToDo from "./jsx/scheduler/Todo";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
@@ -10,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Calender />} />
         <Route path="/Diary" element={<Diary />} />
-        <Route path="/Todo" element={<Todo />} />
+        <Route path="/Todo" element={<ToDo />} />
       </Routes>
     </BrowserRouter>
   );

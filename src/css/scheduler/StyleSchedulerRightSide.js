@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 const Style = styled.section`
-  width: 25vw;
+  width: 20vw;
   margin-left: 3vw;
 
   .time {
-    width: 100%;
+    width: 97.8%;
     height: 9%;
     font-size: 25px;
     display: flex;
@@ -19,7 +19,7 @@ const Style = styled.section`
     justify-content: center;
   }
   .timeTitle {
-    width: 15%;
+    width: 20%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -32,21 +32,21 @@ const Style = styled.section`
     text-align: center;
   }
   .timeTable {
-    width: 250px;
+    width: 80%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     position: relative;
   }
   .timeData {
-    width: 36.9px;
+    width: 40px;
     height: 23px;
     border-bottom: 1px solid black;
     position: relative;
   }
   .timeData::after {
     content: "";
-    width: 34px;
+    width: 40px;
     height: 6px;
     display: block;
     border-right: 1px solid black;
@@ -55,11 +55,11 @@ const Style = styled.section`
     z-index: 2;
   }
   .timeData:nth-child(6n + 0)::after {
-    /* background-color: wheat; */
     display: none;
   }
-  /* background-color: yellowgreen; */
-
+  .unClick:hover {
+    background-color: gray;
+  }
   .click {
     background-color: blue;
   }

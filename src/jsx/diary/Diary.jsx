@@ -1,6 +1,6 @@
-import Header from "./Header";
+import Header from "../Header";
 // import "../css/diary.css";
-import StyleDiary from "../css/StyleDiary";
+import StyleDiary from "../../css/diary/StyleDiary";
 import DiaryHeader from "./DiaryHeader";
 function Diary(props) {
   return (

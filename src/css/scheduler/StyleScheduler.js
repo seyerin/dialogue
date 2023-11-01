@@ -56,7 +56,9 @@ const SchedulerLeftSide = styled.section`
     width: 95%;
     height: 65%;
     border: none;
+    font-size: 17px;
     font-weight: 900;
+    /* line-height: 65%; */
     outline: none;
     resize: none;
     overflow: hidden;

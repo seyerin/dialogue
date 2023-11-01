@@ -1,10 +1,10 @@
 import ToDOList from "./TodoForm";
-import StyleToDo from "../css/StyleToDo";
+import StyleToDo from "../../css/scheduler/StyleToDo";
 import Scheduler from "./Scheduler";
-import Header from "./Header";
+import Header from "../Header";
 const { useState } = require("react");
 
-function Todo(props) {
+function ToDo(props) {
   const [counter, setCounter] = useState(0);
   const [todo, setTodo] = useState([]);
   const [className, setClassname] = useState(false);
@@ -54,4 +54,4 @@ function Todo(props) {
   );
 }
 
-export default Todo;
+export default ToDo;

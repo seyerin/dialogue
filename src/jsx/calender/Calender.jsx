@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Header from "./Header";
-import Main from "../css/StyleCalenderMain";
+import Header from "../Header";
+import Main from "../../css/Calender/StyleCalenderMain";
 import CalenderHeader from "./CalenderHeader";
 
 function Calender(props) {
