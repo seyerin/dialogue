@@ -72,11 +72,14 @@ function Calender(props) {
           <tbody>
             {rows.map((i, j) => (
               <tr key={j}>
-                {i.map((x, y) => (
-                  <td key={y} className={getClassName(x)}>
-                    <span>{x.getDate()}</span>
-                  </td>
-                ))}
+                {i.map(
+                  (x, y) => (
+                    <td key={y} className={getClassName(x)}>
+                      <span>{x.getDate()}</span>
+                    </td>
+                  )
+                  // console.log(i)
+                )}
               </tr>
             ))}
           </tbody>

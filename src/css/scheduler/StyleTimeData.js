@@ -8,7 +8,7 @@ const Atest = styled.div`
   /* background-color: yellowgreen; */
 
   .click {
-    background-color: blue;
+    /* background-color: black; */
   }
 `;
 

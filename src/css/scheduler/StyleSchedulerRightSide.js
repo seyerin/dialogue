@@ -61,7 +61,7 @@ const Style = styled.section`
     background-color: gray;
   }
   .click {
-    background-color: blue;
+    background-color: rgb(58, 58, 58);
   }
 `;
 

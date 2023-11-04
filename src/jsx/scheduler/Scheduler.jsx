@@ -7,22 +7,38 @@ function Scheduler() {
   //   if (JSON.parse(localStorage.getItem("studyPlanner")) != null) {
   //     return JSON.parse(localStorage.getItem("studyPlanner"));
   //   } else {
-  //     return {
-  //       날짜1: {
-  //         studyPlan: {
-  //           plan: SON.parse(localStorage.getItem("plan")),
-  //         },
-  //         studyTime: {
-  //           studyStart: JSON.parse(localStorage.getItem("studyStart")),
-  //           studyEnd: JSON.parse(localStorage.getItem("studyEnd")),
-  //           count: localStorage.getItem("studyStart"),
-  //           time: "",
-  //         },
+  // const a = [
+  //   {
+  //     날짜1: {
+  //       studyPlan: {
+  //         plan: [],
   //       },
-  //       날짜2 ...
-  //     };
-  //   }
-  // }); //--> 나중에 여기에 저장해서 정리 아마 날짜별로 예상 날짜는 date? 아님 입력 받은걸 토대로?
+  //       studyTime: {
+  //         studyStart: [],
+  //         studyEnd: [],
+  //         count: "",
+  //         time: "",
+  //       },
+  //     },
+  //   },
+  //   {
+  //     날짜2: {
+  //       studyPlan: {
+  //         plan: [],
+  //       },
+  //       studyTime: {
+  //         studyStart: [],
+  //         studyEnd: [],
+  //         count: "",
+  //         time: "",
+  //       },
+  //     },
+  //   },
+  //   // 날짜2 ...
+  // ];
+  // a.map((a) => {
+  // console.log(a.날짜1);
+  // });
 
   const [date, setDate] = useState([]);
   const [memo, setMemo] = useState("");
@@ -106,3 +122,25 @@ function Scheduler() {
 }
 
 export default Scheduler;
+
+// 오늘의 기분, 날짜, 날씨, 일기 제목, 일기 내용
+
+// {
+//   날짜1{}
+// }
+
+// []
+
+// {
+//   너너: [
+//     {
+//     20231101{
+//       feeling: 이미지,
+//       wether: 이미지,
+//       date: [],
+//       diaryTitle: "",
+//       diaryText: ""
+//     }
+//   },
+//   ]
+// }
