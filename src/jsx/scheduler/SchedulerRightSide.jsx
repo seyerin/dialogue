@@ -89,7 +89,7 @@ function RightSide(props) {
       <div className="table">
         <div className="timeTitle">
           {timeArr.map((x, y) => (
-            <Time key={y} time={y} />
+            <Time key={y} time={x} />
           ))}
         </div>
         <div
