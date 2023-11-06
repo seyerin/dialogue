@@ -1,54 +1,24 @@
-import ToDOList from "./TodoForm";
+import { useState } from "react";
+import ToDoList from "../scheduler2/TodoForm";
 import StyleToDo from "../../css/scheduler/StyleToDo";
-import Scheduler from "./Scheduler";
-import Header from "../Header";
-const { useState } = require("react");
-
-function ToDo(props) {
-  const [counter, setCounter] = useState(0);
+function ToDo() {
   const [todo, setTodo] = useState([]);
-  const [className, setClassname] = useState(false);
-
-  const enterEvent = (e) => {
-    setCounter((prev) => prev + 1);
-    const toDos = {
-      toDo: e.target.value,
-      key: counter,
-    };
-    if (e.key == "Enter") {
-      e.preventDefault();
-      setTodo([...todo, toDos]);
-      e.target.value = "";
-      setCounter((prev) => prev++);
-    }
-  };
   return (
     <>
-      <Header />
       <StyleToDo>
-        <section className="toDoSection">
-          <form action="" className="toDoForm">
-            <div className="todoBox">
-              {todo.map((t) => (
-                <ToDOList
-                  toDo={t.toDo}
-                  key={t.key}
-                  setToDo={setTodo}
-                  todo={todo}
-                  num={t.key}
-                />
-              ))}
-            </div>
-            <input
-              type="text"
-              placeholder="write your todo"
-              className="toDoInput"
-              onKeyPress={enterEvent}
-              maxLength={16}
-            />
-          </form>
-        </section>
-        <Scheduler />
+        <form action="" className="toDoForm">
+          <div className="todoBox">
+            {todo.map((t) => (
+              <ToDoList key={t.key} />
+            ))}
+          </div>
+          <input
+            type="text"
+            placeholder="write your todo"
+            className="toDoInput"
+            maxLength={16}
+          />
+        </form>
       </StyleToDo>
     </>
   );

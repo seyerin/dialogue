@@ -1,29 +1,28 @@
-import { useEffect, useRef } from "react";
-import Atest from "../../css/scheduler/StyleTimeData";
-function Table(props) {
+import Table from "../../css/scheduler/StyleTimeData";
+function TimeTable(props) {
   return (
-    <Atest
-      ref={(ref) => (props.data[props.x] = ref)}
+    <Table
       className={"timeData unClick"}
+      ref={(ref) => (props.data[props.x] = ref)}
       onMouseDown={(e) => {
         props.setCount((prev) => prev + 1);
-        props.setStart((prev) => {
+        props.setStudyStart((prev) => {
           let temp = [...prev];
           temp.push(props.x);
           return temp;
         });
       }}
       onMouseUp={(e) => {
-        props.setEnd((prev) => {
+        props.setStudyEnd((prev) => {
           let temp = [...prev];
           temp.push(props.x);
           return temp;
         });
-        props.setFlag(true);
-        // ;
         props.timeFunc();
+        props.setFlag(true);
       }}
-    ></Atest>
+    ></Table>
   );
 }
-export default Table;
+
+export default TimeTable;

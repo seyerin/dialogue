@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Atest = styled.div`
+const TimeTable = styled.div`
   /* width: 35px;
   height: 23px;
   border-bottom: 1px solid black;
@@ -12,4 +12,4 @@ const Atest = styled.div`
   }
 `;
 
-export default Atest;
+export default TimeTable;

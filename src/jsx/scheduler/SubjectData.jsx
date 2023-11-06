@@ -1,5 +1,5 @@
-import { useRef } from "react";
 import StyleSubjectData from "../../css/scheduler/StyleSubjectData";
+import { useRef } from "react";
 function SubjectData(props) {
   let counter = 0;
   let focus = useRef([]);
@@ -9,13 +9,16 @@ function SubjectData(props) {
       if (e.target.className == "subject") {
         props.setSubject((prev) => {
           let temp = [...prev];
+          // if()
           temp.push(focus.current[0].value);
+          // console.log(temp);
           return temp;
         });
       } else {
         props.setSubjectPlan((prev) => {
           let temp = [...prev];
           temp.push(focus.current[1].value);
+          // console.log(temp);
           return temp;
         });
       }
@@ -30,29 +33,38 @@ function SubjectData(props) {
       }
     }
   };
-
+  let arr = JSON.parse(localStorage.getItem("scheduler"))[0].studyPlan.plan;
+  // console.log(props.plan);
+  arr.map((i) => {
+    console.log(i);
+  });
   return (
     <StyleSubjectData ref={(ref) => (props.allFocus[props.class] = ref)}>
       <div>
         <input
-          ref={(el) => (focus.current[0] = el)}
           type="text"
           className="subject"
           maxLength={2}
+          ref={(el) => (focus.current[0] = el)}
           onKeyPress={(e) => {
+            // console.log()
+            console.log(focus.current);
             addFunc(e);
           }}
         />
         <input
-          ref={(el) => (focus.current[1] = el)}
           type="text"
           maxLength={25}
+          ref={(el) => (focus.current[1] = el)}
           onKeyPress={(e) => {
             addFunc(e);
           }}
           onClick={(e) => {
             props.setFocusCounter(props.class);
           }}
+          // value={() => {
+
+          // }}
         />
       </div>
       <input
@@ -70,4 +82,5 @@ function SubjectData(props) {
     </StyleSubjectData>
   );
 }
+
 export default SubjectData;

@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-const Style = styled.section`
-  width: 20vw;
-  margin-left: 3vw;
+const Style = styled.div`
+  width: 40%;
+  /* margin-left: 3vw; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .time {
-    width: 97.8%;
+    width: 60%;
     height: 9%;
     font-size: 25px;
     display: flex;

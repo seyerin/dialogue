@@ -1,8 +1,9 @@
-function TimeTitle() {
+function Time(props) {
   return (
     <>
       <div></div>
     </>
   );
 }
-export default TimeTitle;
+
+export default Time;

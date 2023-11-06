@@ -19,7 +19,7 @@ function Header() {
         <nav>
           <LinkItem to="/">CALENDER</LinkItem>
           <LinkItem to="/Diary">DIARY</LinkItem>
-          <LinkItem to="/Todo">TODO</LinkItem>
+          <LinkItem to="/Scheduler">SCHEDULER</LinkItem>
         </nav>
       </header>
     </>

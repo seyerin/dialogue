@@ -1,7 +1,10 @@
-import { useEffect, useRef, useState } from "react";
-import SubjectData from "./SubjectDate";
-function LeftSide(props) {
+import SubjectData from "./SubjectData";
+import LeftSide from "../../css/scheduler/StyleSchedulerLeftSide";
+import { useEffect, useState } from "react";
+
+function SchedulerLeftSide(props) {
   const allFocus = {};
+  // const data = useRef([]);
 
   const [subject, setSubject] = useState([]);
   const [subjectPlan, setSubjectPlan] = useState([]);
@@ -9,69 +12,36 @@ function LeftSide(props) {
   const [focusCounter, setFocusCounter] = useState(1);
   const [checkArr, setCheckArr] = useState([]);
 
-  // console.log(props.newPlan.date);
-  const plan = JSON.parse(localStorage.getItem("plan"));
+  const plan = JSON.parse(localStorage.getItem("scheduler"));
   useEffect(() => {
-    props.setNewPlan((prev) => {
-      let temp = plan;
-      // console.log(temp);
-      temp.date = props.date;
-      temp.memo = props.memo;
-      temp.subject = subject;
-      temp.subJectPlan = subjectPlan;
-      temp.complete = complete;
+    props.setScheduler((prev) => {
+      let temp = { ...prev };
+      temp[0].studyPlan.memo = props.memo;
+      temp[0].studyPlan.subject = subject;
+      temp[0].studyPlan.plan = subjectPlan;
+      temp[0].studyPlan.complete = complete;
       return temp;
     });
-    // console.log(props.newPlan);
   }, [subject, subjectPlan, complete, props.date, props.memo]);
 
   const arr = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
   ];
+
+  console.log();
+
   return (
-    <div className="schedulerSection">
+    <LeftSide className="schedulerSection">
       <form className="schedulerForm" action="">
         <div className="leftSideHeader">
           <div className="date">
             <span>날짜:</span>
-            <input
-              type="text"
-              onChange={(e) => {
-                props.setDate((prev) => {
-                  // console.log("A");
-                  let temp = [...prev];
-                  temp[0] = e.target.value;
-                  return temp;
-                });
-                console.log(props.class);
-              }}
-            />
-            .
-            <input
-              type="text"
-              onChange={(e) => {
-                props.setDate((prev) => {
-                  let temp = [...prev];
-                  temp[1] = e.target.value;
-                  return temp;
-                });
-              }}
-            />
-            .
-            <input
-              type="text"
-              onChange={(e) => {
-                props.setDate((prev) => {
-                  let temp = [...prev];
-                  temp[2] = e.target.value;
-                  return temp;
-                });
-              }}
-            />
+            <span>{new Date().getFullYear()}.</span>
+            <span>{new Date().getMonth() + 1}.</span>
+            <span>{new Date().getDate()}</span>
           </div>
           <textarea
             className="text"
-            maxLength={20}
             onChange={(e) => {
               props.setMemo(e.target.value);
             }}
@@ -83,8 +53,6 @@ function LeftSide(props) {
               <SubjectData
                 key={x}
                 class={x}
-                setStudyInfo={props.setStudyInfo}
-                newPlan={props.newPlan}
                 setSubject={setSubject}
                 setSubjectPlan={setSubjectPlan}
                 subjectPlan={subjectPlan}
@@ -94,13 +62,17 @@ function LeftSide(props) {
                 setFocusCounter={setFocusCounter}
                 setCheckArr={setCheckArr}
                 checkArr={checkArr}
+                plan={
+                  JSON.parse(localStorage.getItem("scheduler"))[0].studyPlan
+                    .paln
+                }
               />
             ))}
           </ul>
         </div>
       </form>
-    </div>
+    </LeftSide>
   );
 }
 
-export default LeftSide;
+export default SchedulerLeftSide;
