@@ -7,19 +7,21 @@ function TimeTable(props) {
       onMouseDown={(e) => {
         props.setCount((prev) => prev + 1);
         props.setStudyStart((prev) => {
-          let temp = [...prev];
+          let temp = prev;
           temp.push(props.x);
+          // console.log(temp);
           return temp;
         });
       }}
       onMouseUp={(e) => {
         props.setStudyEnd((prev) => {
-          let temp = [...prev];
+          let temp = prev;
           temp.push(props.x);
+          // console.log(temp);
           return temp;
         });
         props.timeFunc();
-        props.setFlag(true);
+        // props.setFlag(true);
       }}
     ></Table>
   );

@@ -1,28 +1,23 @@
 import SubjectData from "./SubjectData";
 import LeftSide from "../../css/scheduler/StyleSchedulerLeftSide";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function SchedulerLeftSide(props) {
   const allFocus = {};
-  // const data = useRef([]);
+  const data = useRef([]);
 
-  const [subject, setSubject] = useState([]);
-  const [subjectPlan, setSubjectPlan] = useState([]);
-  const [complete, setComplete] = useState([]);
-  const [focusCounter, setFocusCounter] = useState(1);
-  const [checkArr, setCheckArr] = useState([]);
+  // console.log(new Date().getDate());
 
-  const plan = JSON.parse(localStorage.getItem("scheduler"));
   useEffect(() => {
     props.setScheduler((prev) => {
-      let temp = { ...prev };
-      temp[0].studyPlan.memo = props.memo;
-      temp[0].studyPlan.subject = subject;
-      temp[0].studyPlan.plan = subjectPlan;
-      temp[0].studyPlan.complete = complete;
+      let temp = prev;
+      temp[0]["day" + new Date().getDate()].studyPlan.memo = props.memo;
+      temp[0]["day" + new Date().getDate()].studyPlan.subject = props.subject;
+      temp[0]["day" + new Date().getDate()].studyPlan.plan = props.subjectPlan;
+      temp[0]["day" + new Date().getDate()].studyPlan.complete = props.complete;
       return temp;
     });
-  }, [subject, subjectPlan, complete, props.date, props.memo]);
+  }, [props.subject, props.subjectPlan, props.complete, props.memo]);
 
   const arr = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -45,27 +40,31 @@ function SchedulerLeftSide(props) {
             onChange={(e) => {
               props.setMemo(e.target.value);
             }}
+            defaultValue={
+              props.scheduler[0]["day" + new Date().getDate()].studyPlan.memo
+            }
           ></textarea>
         </div>
         <div className="studyList">
           <ul>
-            {arr.map((x) => (
+            {arr.map((x, y) => (
               <SubjectData
                 key={x}
                 class={x}
-                setSubject={setSubject}
-                setSubjectPlan={setSubjectPlan}
-                subjectPlan={subjectPlan}
-                setComplete={setComplete}
+                setSubject={props.setSubject}
+                setSubjectPlan={props.setSubjectPlan}
+                subjectPlan={props.subjectPlan}
+                setComplete={props.setComplete}
                 allFocus={allFocus}
-                focusCounter={focusCounter}
-                setFocusCounter={setFocusCounter}
-                setCheckArr={setCheckArr}
-                checkArr={checkArr}
-                plan={
-                  JSON.parse(localStorage.getItem("scheduler"))[0].studyPlan
-                    .paln
-                }
+                focusCounter={props.focusCounter}
+                setFocusCounter={props.setFocusCounter}
+                setCheckArr={props.setCheckArr}
+                checkArr={props.checkArr}
+                data={data}
+                scheduler={props.scheduler}
+                subjectRef={props.subjectRef.current[y]}
+                planRef={props.planRef.current[y]}
+                checkRef={props.checkRef.current[y]}
               />
             ))}
           </ul>

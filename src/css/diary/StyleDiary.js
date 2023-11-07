@@ -8,6 +8,7 @@ const StyleDiary = styled.main`
   align-items: center;
 
   .diary {
+    margin-top: 5vh;
     width: 80%;
     height: 90%;
     display: flex;
@@ -40,6 +41,12 @@ const StyleDiary = styled.main`
     font-size: 15px;
     resize: none;
     outline: none;
+  }
+  textarea::-webkit-scrollbar {
+    width: 3px;
+  }
+  textarea::-webkit-scrollbar-thumb {
+    background-color: black;
   }
   .btnBox {
     width: 79.7%;

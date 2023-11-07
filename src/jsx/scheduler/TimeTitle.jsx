@@ -1,7 +1,7 @@
-function TimeTitle() {
+function TimeTitle(props) {
   return (
     <>
-      <div></div>
+      <div>{props.time}</div>
     </>
   );
 }

@@ -5,23 +5,20 @@ import { useState, useRef, useEffect } from "react";
 function SchedulerRightSide(props) {
   const data = useRef([]);
 
-  const [time, setTime] = useState([0, 0]);
-  const [studyStart, setStudyStart] = useState([]);
-  const [studyEnd, setStudyEnd] = useState([]);
-  const [count, setCount] = useState(0);
-  const [flag, setFlag] = useState(false);
-  // const schedule = JSON.parse(localStorage.getItem("scheduler"));
+  // console.log(props.studyStart);
   useEffect(() => {
     props.setScheduler((prev) => {
-      let temp = { ...prev };
-      temp[0].studyTimeTable.start = studyStart;
-      temp[0].studyTimeTable.end = studyEnd;
-      temp[0].studyTimeTable.time = time;
-      temp[0].studyTimeTable.count = count;
-      // console.log(studyStart);
+      let temp = prev;
+      temp[0]["day" + new Date().getDate()].studyTimeTable.start =
+        props.studyStart;
+      temp[0]["day" + new Date().getDate()].studyTimeTable.end = props.studyEnd;
+      temp[0]["day" + new Date().getDate()].studyTimeTable.time = props.time;
+      temp[0]["day" + new Date().getDate()].studyTimeTable.count = props.count;
+      // console.log("state", props.scheduler);
+      // console.log(temp);
       return temp;
     });
-  }, [time, setStudyEnd, setStudyStart, count]);
+  }, [props.time, props.setStudyEnd, props.setStudyStart, props.count]);
 
   let arr = [];
   for (let i = 0; i < 144; i++) {
@@ -57,12 +54,12 @@ function SchedulerRightSide(props) {
   let counter2 = 0;
 
   const painting = () => {
-    let start = JSON.parse(localStorage.getItem("scheduler"))[0].studyTimeTable
-      .start;
-    let end = JSON.parse(localStorage.getItem("scheduler"))[0].studyTimeTable
-      .end;
-    let countArr = JSON.parse(localStorage.getItem("scheduler"))[0]
-      .studyTimeTable.count;
+    let start =
+      props.scheduler[0]["day" + new Date().getDate()].studyTimeTable.start;
+    let end =
+      props.scheduler[0]["day" + new Date().getDate()].studyTimeTable.end;
+    let countArr =
+      props.scheduler[0]["day" + new Date().getDate()].studyTimeTable.count;
 
     for (let j = 0; j < countArr; j++) {
       for (let i = start[j]; i <= end[j]; i++) {
@@ -80,8 +77,7 @@ function SchedulerRightSide(props) {
     }
     const hour = Math.floor((counter2 * 10) / 60);
     const minute = (counter2 * 10) % 60;
-
-    setTime((prev) => {
+    props.setTime((prev) => {
       let temp = [hour, minute];
       return temp;
     });
@@ -92,7 +88,7 @@ function SchedulerRightSide(props) {
       <Style className="rightSide">
         <div className="time">
           <p>
-            <span>{time[0]}</span>시간<span>{time[1]}</span>분
+            <span>{props.time[0]}</span>시간<span>{props.time[1]}</span>분
           </p>
         </div>
         <div className="table">
@@ -112,13 +108,13 @@ function SchedulerRightSide(props) {
                 key={x}
                 x={x}
                 data={data}
-                setCount={setCount}
-                setStudyEnd={setStudyEnd}
-                setStudyStart={setStudyStart}
-                setTime={setTime}
+                setCount={props.setCount}
+                setStudyEnd={props.setStudyEnd}
+                setStudyStart={props.setStudyStart}
+                setTime={props.setTime}
                 timeFunc={timeFunc}
-                studyStart={studyStart}
-                setFlag={setFlag}
+                studyStart={props.studyStart}
+                setFlag={props.setFlag}
               />
             ))}
           </div>
