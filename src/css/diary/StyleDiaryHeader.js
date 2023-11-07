@@ -68,7 +68,7 @@ const StyleDiaryHeader = styled.section`
     margin-left: 0.5vw;
     width: 3vw;
   }
-  .whetherBox {
+  .weatherBox {
     width: 13%;
     height: 10vh;
     display: flex;
@@ -76,17 +76,17 @@ const StyleDiaryHeader = styled.section`
     align-items: center;
     position: relative;
   }
-  .curruntWhether {
+  .curruntweather {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .curruntWhether img {
+  .curruntweather img {
     margin-top: 0.5vh;
   }
-  .whether {
+  .weather {
     width: 9vw;
     height: 17vh;
     border: 1px solid black;

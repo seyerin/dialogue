@@ -4,10 +4,11 @@ import Main from "../../css/Calender/StyleCalenderMain";
 import CalenderHeader from "./CalenderHeader";
 
 function Calender(props) {
+  const nowDate = new Date();
   const [nextMonth, setNextMonth] = useState(0);
   const [prevMonth, setPreveMonth] = useState(1);
 
-  const [curruentDate, setCurrentDate] = useState(new Date());
+  const [curruentDate, setCurrentDate] = useState(nowDate);
   const nowYears = curruentDate.getFullYear();
   const nowMonth = curruentDate.getMonth();
 

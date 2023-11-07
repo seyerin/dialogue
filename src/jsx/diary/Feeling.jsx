@@ -6,6 +6,7 @@ function Feeling(props) {
         alt=""
         onClick={(e) => {
           props.changeFeeling(e);
+          props.setFeelingRemove((prev) => !prev);
         }}
       />
     </>
