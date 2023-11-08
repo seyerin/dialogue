@@ -6,15 +6,20 @@ import Weather from "./Weather";
 
 function DiaryHeader(props) {
   const diaryLength = props.diary.length;
+  const currentDate = "";
+  if (localStorage.getItem("currentDate")) {
+    currentDate = JSON.parse(localStorage.getItem("currentDate"))[2];
+  }
 
   const [feelingRemove, setFeelingRemove] = useState(true);
   const [weatherRemove, setWeatherRemove] = useState(true);
-  const [feeling, setFeeling] = useState("img/feeling/happy.png");
+  const [feeling, setFeeling] = useState("img/feeling/empty.png");
   const [weather, setWeather] = useState("img/weather/sun.png");
 
   const changeFeeling = (e) => {
     setFeeling(e.target.src);
     props.setFeelingEmoji(e.target.src);
+
     for (let i = 0; i < diaryLength; i++) {
       if (
         String(Object.keys(props.currentDiary)) ==
@@ -61,8 +66,12 @@ function DiaryHeader(props) {
           <img
             src={props.diary
               .map((x) => {
-                if (x[Object.keys(x)].weather != "") {
-                  if (String(Object.keys(x)) == "day" + nowDate.getDate()) {
+                if (x[Object.keys(x)].feeling != "") {
+                  if (
+                    String(Object.keys(x)) ==
+                    "day" +
+                      `${currentDate ? currentDate[2] : nowDate.getDate()}`
+                  ) {
                     return x[Object.keys(x)].feeling;
                   }
                 } else {
@@ -89,8 +98,10 @@ function DiaryHeader(props) {
         </div>
       </div>
       <p>
-        날짜: <span>{nowDate.getFullYear()}</span>.
-        <span>{nowDate.getMonth() + 1}</span>.<span>{nowDate.getDate()}</span>
+        날짜:{" "}
+        <span>{currentDate ? currentDate[0] : nowDate.getFullYear()}</span>.
+        <span>{currentDate ? currentDate[1] + 1 : nowDate.getMonth() + 1}</span>
+        .<span>{currentDate ? currentDate[2] : nowDate.getDate()}</span>
       </p>
       <div className="weatherBox">
         <div className="curruntweather">
@@ -99,7 +110,11 @@ function DiaryHeader(props) {
             src={props.diary
               .map((x) => {
                 if (x[Object.keys(x)].weather != "") {
-                  if (String(Object.keys(x)) == "day" + nowDate.getDate()) {
+                  if (
+                    String(Object.keys(x)) ==
+                    "day" +
+                      `${currentDate ? currentDate[2] : nowDate.getDate()}`
+                  ) {
                     return x[Object.keys(x)].weather;
                   }
                 } else {

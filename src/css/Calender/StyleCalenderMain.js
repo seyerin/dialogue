@@ -1,68 +1,69 @@
 import styled from "styled-components";
+const Td = styled.td`
+  width: 10vw;
+  height: 10vh;
+  border: 1px solid rgb(0, 0, 0);
+  border-top: none;
+  border-right: none;
+  position: relative;
 
-const Main = styled.main`
-  width: 100%;
-  height: 89%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  table {
-    width: 60%;
-    height: 85%;
-  }
-  thead {
+  .calenderData {
     width: 100%;
-    height: 10%;
-  }
-  th {
-    width: 10%;
     height: 100%;
-  }
-  th::after {
-    content: "";
-    width: 80%;
-    height: 1%;
-    border-bottom: 1px solid black;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
-    top: 2vh;
-    left: 1vw;
+    top: 0;
+    left: 0;
   }
-  tbody {
+  .diaryInfo {
     width: 100%;
-    height: 90%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
   }
-  tbody tr {
-    width: 100%;
-    height: 15%;
+  .feelingColor {
+    width: 85%;
+    height: 25%;
   }
-  td {
-    width: 14%;
-    height: 15%;
-    border: 1px solid rgb(0, 0, 0);
-    border-top: none;
-    border-right: none;
+  .diaryTitle {
+    width: 85%;
+    height: 25%;
   }
-  tr td:last-child {
-    border-right: 1px solid black;
+
+  .angry,
+  .tired,
+  .soso,
+  .sick,
+  .sad,
+  .happy,
+  .title {
+    border: 1px solid black;
   }
-  td span {
-    margin-left: 0.5vw;
-    display: block;
-    position: relative;
-    bottom: 3.5vh;
+  .title {
+    background-color: gray;
   }
-  .today {
-    font-weight: 900;
-    text-decoration: underline;
+  .angry {
+    background-color: red;
   }
-  .sun {
-    color: red;
+  .happy {
+    background-color: yellow;
   }
-  .set {
-    color: blue;
+  .soso {
+    background-color: gray;
+  }
+  .sick {
+    background-color: green;
+  }
+  .sad {
+    background-color: blue;
+  }
+  .tired {
+    background-color: dodgerblue;
   }
 `;
 
-export default Main;
+export default Td;

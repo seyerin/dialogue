@@ -1,25 +1,19 @@
 import { useState } from "react";
 import Header from "../Header";
-import Main from "../../css/Calender/StyleCalenderMain";
+import Main from "../../css/Calender/StyleCalender";
 import CalenderHeader from "./CalenderHeader";
+import CalenderMain from "./CalenderMain";
 
 function Calender(props) {
   const nowDate = new Date();
   const [nextMonth, setNextMonth] = useState(0);
   const [prevMonth, setPreveMonth] = useState(1);
-
   const [curruentDate, setCurrentDate] = useState(nowDate);
   const nowYears = curruentDate.getFullYear();
   const nowMonth = curruentDate.getMonth();
-
   const monthStart = new Date(nowYears, nowMonth + nextMonth, 1).getDay();
   const monthEnd = new Date(nowYears, nowMonth + prevMonth, 0);
-
   const endDay = monthEnd.getDate();
-  const endDay2 = monthEnd.getDay();
-
-  const startDate = new Date(nowYears, nowMonth + nextMonth, -monthStart + 1);
-
   const endDate = new Date(
     nowYears,
     nowMonth + prevMonth,
@@ -46,7 +40,11 @@ function Calender(props) {
   }
 
   function getClassName(x) {
-    if (x.getDate() == curruentDate.getDate() && nextMonth == 0) {
+    if (
+      x.getDate() == curruentDate.getDate() &&
+      nextMonth == 0 &&
+      x.getMonth() == curruentDate.getMonth()
+    ) {
       return "today";
     } else if (x.getDay() == 0) {
       return "sun";
@@ -56,7 +54,6 @@ function Calender(props) {
       return "";
     }
   }
-
   return (
     <>
       <Header />
@@ -66,25 +63,13 @@ function Calender(props) {
           setPreveMonth={setPreveMonth}
           monthEnd={monthEnd}
         />
-        <table>
-          <thead>
-            <tr>{days}</tr>
-          </thead>
-          <tbody>
-            {rows.map((i, j) => (
-              <tr key={j}>
-                {i.map(
-                  (x, y) => (
-                    <td key={y} className={getClassName(x)}>
-                      <span>{x.getDate()}</span>
-                    </td>
-                  )
-                  // console.log(i)
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <CalenderMain
+          days={days}
+          rows={rows}
+          getClassName={getClassName}
+          curruentDate={curruentDate}
+          nextMonth={nextMonth}
+        />
       </Main>
     </>
   );

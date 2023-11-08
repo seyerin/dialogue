@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
 function DiaryMain(props) {
+  const currentDate = "";
+  if (localStorage.getItem("currentDate")) {
+    currentDate = JSON.parse(localStorage.getItem("currentDate"))[2];
+  }
+  // console.log(currentDate);
   const nowDate = new Date();
   const diaryLength = props.diary.length;
   const obj = [
@@ -44,25 +49,6 @@ function DiaryMain(props) {
     }
   };
 
-  const changedDiary = () => {
-    for (let i = 0; i < diaryLength; i++) {
-      if (
-        String(Object.keys(props.currentDiary)) ==
-        String(Object.keys(props.diary[i]))
-      ) {
-        props.setDiary((prev) => {
-          let temp = [...prev];
-          temp[i][Object.keys(props.diary[i])].feeling = props.feelingEmoji;
-          temp[i][Object.keys(props.diary[i])].weather = props.weatherEmoji;
-          temp[i][Object.keys(props.diary[i])].diaryTitle = props.title;
-          temp[i][Object.keys(props.diary[i])].diaryText = props.text;
-          return temp;
-        });
-        break;
-      }
-    }
-  };
-
   useEffect(() => {
     props.setCurrentDiary((prev) => {
       let temp = { ...prev };
@@ -78,7 +64,6 @@ function DiaryMain(props) {
       return temp;
     });
   }, [props.feelingEmoji, props.weatherEmoji, props.title, props.text]);
-  //x[Object.keys(x)].diaryTitle
   return (
     <>
       <div className="diary">
@@ -92,7 +77,8 @@ function DiaryMain(props) {
             }}
             defaultValue={props.diary
               .map((x) =>
-                String(Object.keys(x)) == "day" + nowDate.getDate()
+                String(Object.keys(x)) ==
+                "day" + `${currentDate ? currentDate : nowDate.getDate()}`
                   ? x[Object.keys(x)].diaryTitle
                   : ""
               )
@@ -110,16 +96,14 @@ function DiaryMain(props) {
           }}
           defaultValue={props.diary
             .map((x) =>
-              String(Object.keys(x)) == "day" + nowDate.getDate()
+              String(Object.keys(x)) ==
+              "day" + `${currentDate ? currentDate : nowDate.getDate()}`
                 ? x[Object.keys(x)].diaryText
                 : ""
             )
             .join("")}
         ></textarea>
         <div className="btnBox">
-          <button type="submit" className="change" onClick={changedDiary}>
-            수정
-          </button>
           <button type="submit" className="save" onClick={savedDiary}>
             저장
           </button>
