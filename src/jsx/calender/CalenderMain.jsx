@@ -6,6 +6,12 @@ function CalenderMain(props) {
   const [currentDate, setCurrentDate] = useState("");
 
   const diaryArr = JSON.parse(localStorage.getItem("diary"));
+  console.log(
+    JSON.parse(localStorage.getItem("diary"))[1][
+      Object.keys(JSON.parse(localStorage.getItem("diary"))[1])
+    ].feeling.substring(38)
+  );
+
   const [currentNum, setCurrentNum] = useState(0);
   let count = 0;
   return (
