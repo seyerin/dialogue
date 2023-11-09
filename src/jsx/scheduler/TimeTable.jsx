@@ -7,7 +7,7 @@ function TimeTable(props) {
       onMouseDown={(e) => {
         props.setCount((prev) => prev + 1);
         props.setStudyStart((prev) => {
-          let temp = prev;
+          let temp = [...prev];
           temp.push(props.x);
           // console.log(temp);
           return temp;

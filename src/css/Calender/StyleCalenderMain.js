@@ -6,6 +6,7 @@ const Td = styled.td`
   border-top: none;
   border-right: none;
   position: relative;
+  cursor: pointer;
 
   .calenderData {
     width: 100%;
@@ -44,25 +45,25 @@ const Td = styled.td`
     border: 1px solid black;
   }
   .title {
-    background-color: gray;
+    background-color: #e0e0e0;
   }
   .angry {
-    background-color: red;
+    background-color: #ff0000;
   }
   .happy {
-    background-color: yellow;
+    background-color: #fffd85;
   }
   .soso {
-    background-color: gray;
+    background-color: #a170bd;
   }
   .sick {
-    background-color: green;
+    background-color: #2e913b;
   }
   .sad {
-    background-color: blue;
+    background-color: #7691fc;
   }
   .tired {
-    background-color: dodgerblue;
+    background-color: #40436e;
   }
 `;
 

@@ -15,6 +15,7 @@ function Scheduler() {
       return [];
     }
   });
+
   const [subjectPlan, setSubjectPlan] = useState(() => {
     if (localStorage.getItem("scheduler")) {
       return JSON.parse(localStorage.getItem("scheduler"))[0][
@@ -24,6 +25,7 @@ function Scheduler() {
       return [];
     }
   });
+
   const [complete, setComplete] = useState(() => {
     if (localStorage.getItem("scheduler")) {
       return JSON.parse(localStorage.getItem("scheduler"))[0][
@@ -33,6 +35,7 @@ function Scheduler() {
       return [];
     }
   });
+
   const [memo, setMemo] = useState(() => {
     if (localStorage.getItem("scheduler")) {
       return JSON.parse(localStorage.getItem("scheduler"))[0][
@@ -96,7 +99,7 @@ function Scheduler() {
       : []
   );
 
-  const [toDoCompleteArr, setToDoCompleteArr] = useState(() =>
+  const [toDoComplete, setToDoComplete] = useState(() =>
     localStorage.getItem("scheduler")
       ? JSON.parse(localStorage.getItem("scheduler"))[0][
           "day" + new Date().getDate()
@@ -111,20 +114,10 @@ function Scheduler() {
   );
   let subjectRef = useRef([]);
   let planRef = useRef([]);
-  let checkRef = useRef([]);
 
   useEffect(() => {
-    console.log(scheduler);
     localStorage.setItem("scheduler", JSON.stringify(scheduler));
-  }, [
-    scheduler,
-    studyStart,
-    studyEnd,
-    subject,
-    subjectPlan,
-    toDo,
-    toDoCompleteArr,
-  ]);
+  }, [scheduler]);
 
   useEffect(() => {
     // console.log(scheduler);
@@ -133,9 +126,6 @@ function Scheduler() {
     });
     scheduler[0]["day" + new Date().getDate()].studyPlan.plan.map((x) => {
       planRef.current.push(x);
-    });
-    scheduler[0]["day" + new Date().getDate()].studyPlan.complete.map((x) => {
-      checkRef.current.push(x);
     });
   }, [subjectRef]);
 
@@ -149,8 +139,8 @@ function Scheduler() {
             setScheduler={setScheduler}
             toDo={toDo}
             setToDo={setToDo}
-            setToDoCompleteArr={setToDoCompleteArr}
-            toDoCompleteArr={toDoCompleteArr}
+            setToDoComplete={setToDoComplete}
+            toDoComplete={toDoComplete}
           />
         </section>
         <section className="rightSection">
@@ -171,7 +161,6 @@ function Scheduler() {
             checkArr={checkArr}
             subjectRef={subjectRef}
             planRef={planRef}
-            checkRef={checkRef}
           />
           <SchedulerRightSide
             scheduler={scheduler}

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import DiaryPop from "./DiaryPop";
+import Swal from "sweetalert";
 
 function DiaryMain(props) {
   let currentDate = "";
@@ -8,7 +10,7 @@ function DiaryMain(props) {
   const nowDate = new Date();
   const diaryLength = props.diary.length;
   const [read, setRead] = useState(false);
-
+  const [goTo, setGoTo] = useState(false);
   const savedDiary = () => {
     for (let i = 0; i < diaryLength; i++) {
       if (
@@ -42,27 +44,20 @@ function DiaryMain(props) {
             return temp;
           });
         }
+        // fetch("http://localhost:3000/main/diary", {
+        //   method: "post",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify({
+        //     feeling: "feel",
+        //   }),
+        // })
+        //   .then((response) => response.json())
+        //   .then((data) => console.log("g"))
+        //   .catch((e) => console.log("f"));
       }
     }
-
-    //   fetch("http://diary", {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json ; charset=utf-8",
-    //       Accept: "*/*",
-    //       "Access-Control-Allow-Origin": "https://shoppingmallserver.fly.dev/",
-    //     },
-    //     body: JSON.stringify({
-    //       feeling: "feel",
-    //       weather: "I am testing!",
-    //       diaryTitle: "sssss",
-    //       diaryText: "aaaaaa",
-    //       date: "20231109",
-    //     }),
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => console.log("g"))
-    //     .catch((e) => console.log("f"));
   };
 
   useEffect(() => {
@@ -80,6 +75,11 @@ function DiaryMain(props) {
       return temp;
     });
   }, [props.feelingEmoji, props.weatherEmoji, props.title, props.text]);
+
+  const togo = (e) => {
+    setGoTo(true);
+  };
+
   return (
     <>
       <div className="diary">
@@ -119,8 +119,16 @@ function DiaryMain(props) {
             )
             .join("")}
         ></textarea>
+        {goTo ? <DiaryPop /> : ""}
         <div className="btnBox">
-          <button type="submit" className="save" onClick={savedDiary}>
+          <button
+            type="submit"
+            className="save"
+            onClick={(e) => {
+              savedDiary();
+              togo(e);
+            }}
+          >
             저장
           </button>
         </div>

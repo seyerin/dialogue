@@ -50,6 +50,7 @@ const Detail = styled.div`
     text-overflow: ellipsis;
     line-height: 5vh;
     /* background-color: blue; */
+    cursor: pointer;
   }
 `;
 

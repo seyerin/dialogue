@@ -28,11 +28,11 @@ const StyleDiaryHeader = styled.section`
     justify-content: space-between;
     align-items: center;
   }
-  .defaultBox img {
+  /* .defaultBox img {
     width: 45px;
     height: 45px;
     z-index: 2;
-  }
+  } */
   .feeling {
     width: 12vw;
     height: 17vh;
@@ -44,6 +44,7 @@ const StyleDiaryHeader = styled.section`
     position: absolute;
     top: 9.5vh;
     background-color: white;
+    z-index: 2;
   }
   .remove {
     display: none;
@@ -52,6 +53,7 @@ const StyleDiaryHeader = styled.section`
   img {
     width: 50px;
     height: 50px;
+    cursor: pointer;
   }
 
   input {
@@ -76,14 +78,14 @@ const StyleDiaryHeader = styled.section`
     align-items: center;
     position: relative;
   }
-  .curruntweather {
+  .curruntWeather {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .curruntweather img {
+  .curruntWhether img {
     margin-top: 0.5vh;
   }
   .weather {
@@ -96,8 +98,9 @@ const StyleDiaryHeader = styled.section`
     align-items: center;
     position: absolute;
     top: 9.5vh;
-    left: 0.5vw;
+    left: 1vw;
     background-color: white;
+    z-index: 2;
   }
 `;
 

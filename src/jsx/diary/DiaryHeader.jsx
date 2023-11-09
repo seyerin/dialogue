@@ -61,6 +61,8 @@ function DiaryHeader(props) {
   const nowDate = new Date();
   let count = 0;
   let count2 = 0;
+  let count3 = 0;
+  let count4 = 0;
   return (
     <StyleDiaryHeader className="inpo">
       <div className="feelingBox">
@@ -78,8 +80,8 @@ function DiaryHeader(props) {
                         ) {
                           return x[Object.keys(x)].feeling;
                         } else {
-                          count++;
-                          if (count == diaryArr.length) {
+                          count2++;
+                          if (count2 == diaryArr.length) {
                             return feeling;
                           }
                         }
@@ -115,7 +117,7 @@ function DiaryHeader(props) {
         .<span>{currentDate ? currentDate[2] : nowDate.getDate()}</span>
       </p>
       <div className="weatherBox">
-        <div className="curruntweather">
+        <div className="curruntWeather">
           <p>날씨 : </p>
           <img
             src={
@@ -129,8 +131,8 @@ function DiaryHeader(props) {
                         ) {
                           return x[Object.keys(x)].weather;
                         } else {
-                          count2++;
-                          if (count2 == diaryArr.length) {
+                          count3++;
+                          if (count3 == diaryArr.length) {
                             return weather;
                           }
                         }

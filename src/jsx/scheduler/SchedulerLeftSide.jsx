@@ -10,7 +10,7 @@ function SchedulerLeftSide(props) {
 
   useEffect(() => {
     props.setScheduler((prev) => {
-      let temp = prev;
+      let temp = [...prev];
       temp[0]["day" + new Date().getDate()].studyPlan.memo = props.memo;
       temp[0]["day" + new Date().getDate()].studyPlan.subject = props.subject;
       temp[0]["day" + new Date().getDate()].studyPlan.plan = props.subjectPlan;
@@ -23,8 +23,8 @@ function SchedulerLeftSide(props) {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
   ];
 
-  console.log();
-
+  let checkRef = useRef([]);
+  // console.log(checkRef);
   return (
     <LeftSide className="schedulerSection">
       <form className="schedulerForm" action="">
@@ -64,7 +64,7 @@ function SchedulerLeftSide(props) {
                 scheduler={props.scheduler}
                 subjectRef={props.subjectRef.current[y]}
                 planRef={props.planRef.current[y]}
-                checkRef={props.checkRef.current[y]}
+                checkRef={checkRef}
               />
             ))}
           </ul>

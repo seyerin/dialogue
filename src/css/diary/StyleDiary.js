@@ -15,6 +15,7 @@ const StyleDiary = styled.main`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    position: relative;
   }
   .diary p {
     width: 80%;
@@ -63,6 +64,12 @@ const StyleDiary = styled.main`
     outline: none;
     background-color: rgba(240, 248, 255, 0);
     cursor: pointer;
+  }
+  .save {
+    cursor: pointer;
+  }
+  .save:active {
+    background-color: #c6c1ff;
   }
 `;
 

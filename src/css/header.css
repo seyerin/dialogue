@@ -32,7 +32,10 @@ nav {
   font-weight: 600;
   /* background-color: rgba; */
 }
-li {
+a {
   list-style: none;
   cursor: pointer;
+}
+a:hover {
+  color: blue;
 }

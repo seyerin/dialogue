@@ -3,6 +3,8 @@ import ToDoList from "../scheduler/ToDoList";
 import StyleToDo from "../../css/scheduler/StyleToDo";
 function ToDo(props) {
   let complete = useRef([]);
+  let classRef = useRef([]);
+
   const [counter, setCounter] = useState(() => {
     if (localStorage.getItem("scheduler")) {
       return props.scheduler[0]["day" + new Date().getDate()].toDo.toDoText
@@ -11,72 +13,39 @@ function ToDo(props) {
       return 0;
     }
   });
-  // const [toDo, setToDo] = useState(() =>
-  //   localStorage.getItem("scheduler")
-  //     ? JSON.parse(localStorage.getItem("scheduler"))[0][
-  //         "day" + new Date().getDate()
-  //       ].toDo.toDoText
-  //     : []
-  // );
   const [toDoArr, setToDoArr] = useState([]);
   const [toDoKey, setToDoKey] = useState([]);
-  // const [toDo,]
-  // console.log(todo);
-
-  // if (localStorage.getItem("scheduler")) {
-  //   console.log();
-  // }
   useEffect(() => {
-    // console.log(counter);
-    // toDo.map((x, y) =>
-    //   setToDoArr((prev) => {
-    //     let temp = [...prev];
-    //     temp[y] = x;
-    //     console.log(temp);
-    //     console.log(y);
-    //     return temp;
-    //   })
-    // );
-    // toDo.map((x, y) =>
-    //   setToDoKey((prev) => {
-    //     let temp = [...prev];
-    //     temp[y] = x.key;
-    //     return temp;
-    //   })
-    // );
     props.setScheduler((prev) => {
-      let temp = prev;
+      let temp = [...prev];
       if (props.toDo.length > 0) {
         temp[0]["day" + new Date().getDate()].toDo.toDoText = props.toDo;
         temp[0]["day" + new Date().getDate()].toDo.toDoComplete =
-          props.toDoCompleteArr;
+          props.toDoComplete;
       }
-      // console.log(temp);
-      return prev;
+      return temp;
     });
-    // console.log(toDo);
-  }, [props.toDo, props.toDoCompleteArr]);
+  }, [props.toDo, props.toDoComplete]);
 
-  const completeFunc = () => {
-    // console.log(className);
-    for (let i = 0; i < props.toDo.length; i++) {
-      if (complete[i].className == "complete") {
-        props.setToDoCompleteArr((prev) => {
-          let temp = [...prev];
-          temp[i] = true;
-          // console.log(temp);
-          return temp;
-        });
-      } else {
-        props.setToDoCompleteArr((prev) => {
-          let temp = [...prev];
-          temp[i] = false;
-          // console.log(temp);
-          return temp;
-        });
-      }
-    }
-  };
+  // const completeFunc = () => {
+  //   for (let i = 0; i < props.toDo.length; i++) {
+  //     if (complete[i].className == "complete") {
+  //       props.setToDoCompleteArr((prev) => {
+  //         let temp = [...prev];
+  //         temp[i] = true;
+  //         return temp;
+  //       });
+  //     } else {
+  //       props.setToDoComplete((prev) => {
+  //         let temp = [...prev];
+  //         temp[i] = false;
+  //         return temp;
+  //       });
+  //     }
+  //   }
+  // };
+
+  // console.log(complete[0]);
 
   const enterEvent = (e) => {
     setCounter((prev) => prev + 1);
@@ -106,10 +75,11 @@ function ToDo(props) {
                 toDoArr={props.toDo}
                 num={x.key}
                 complete={complete}
-                setToDoCompleteArr={props.setToDoCompleteArr}
-                toDoCompleteArr={props.toDoCompleteArr}
+                setToDoComplete={props.setToDoComplete}
+                toDoComplete={props.toDoComplete}
                 setToDoArr={setToDoArr}
-                completeFunc={completeFunc}
+                classRef={classRef}
+                // completeFunc={completeFunc}
               />
             ))}
           </div>

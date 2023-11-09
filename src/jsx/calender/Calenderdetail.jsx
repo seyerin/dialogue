@@ -68,7 +68,7 @@ function CalenderDetail(props) {
           <p className="diaryTitle" onClick={toDiary}>
             {localStorage.getItem("diary")
               ? props.diaryArr
-                  .map((x) => {
+                  .map((x, y) => {
                     if (props.currentNum != 0) {
                       if (
                         String(Object.keys(x)).replace("day", "") ==
@@ -76,12 +76,15 @@ function CalenderDetail(props) {
                       ) {
                         if (x[Object.keys(x)].diaryTitle == "") {
                           return "일기 쓰러 가기 ✏️✏️";
-                          // console.log("a");
                         } else {
                           return x[Object.keys(x)].diaryTitle;
                         }
                       } else {
-                        return "일기 쓰러 가기 ✏️✏️";
+                        count2++;
+                        if (count2 == props.diaryArr.length) {
+                          console.log(y);
+                          return "일기 쓰러 가기 ✏️✏️";
+                        }
                       }
                     }
                   })
