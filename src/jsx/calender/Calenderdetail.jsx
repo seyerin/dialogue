@@ -2,7 +2,6 @@ import { useState } from "react";
 import Detail from "../../css/Calender/StylrCalenderDetail";
 import { useNavigate, Link } from "react-router-dom";
 function CalenderDetail(props) {
-  // console.log(props.currentDate.getDate());
   const navigate = useNavigate();
   const toDiary = () => {
     localStorage.setItem(
@@ -13,11 +12,12 @@ function CalenderDetail(props) {
         props.currentDate.getDate(),
       ])
     );
-    // props.currentDate.getFullYear()
     navigate("/Diary");
   };
   const [diary, setDiary] = useState();
   const [feeling, setFeeling] = useState();
+  let count = 0;
+  let count2 = 0;
 
   return (
     <>
@@ -46,15 +46,21 @@ function CalenderDetail(props) {
                           props.currentNum
                         ) {
                           if (x[Object.keys(x)].feeling == "") {
+                            console.log("a");
                             return "img/feeling/empty.png";
                           } else {
                             return x[Object.keys(x)].feeling;
+                          }
+                        } else {
+                          count++;
+                          if (count == props.diaryArr.length) {
+                            return "img/feeling/empty.png";
                           }
                         }
                       }
                     })
                     .join("")
-                : ""
+                : "img/feeling/empty.png"
             }
             alt=""
             className="feeling"
@@ -70,14 +76,17 @@ function CalenderDetail(props) {
                       ) {
                         if (x[Object.keys(x)].diaryTitle == "") {
                           return "일기 쓰러 가기 ✏️✏️";
+                          // console.log("a");
                         } else {
                           return x[Object.keys(x)].diaryTitle;
                         }
+                      } else {
+                        return "일기 쓰러 가기 ✏️✏️";
                       }
                     }
                   })
                   .join("")
-              : ""}
+              : "일기 쓰러 가기 ✏️✏️"}
           </p>
         </div>
       </Detail>

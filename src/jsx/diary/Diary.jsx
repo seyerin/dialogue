@@ -3,20 +3,17 @@ import StyleDiary from "../../css/diary/StyleDiary";
 import DiaryHeader from "./DiaryHeader";
 import DiaryMain from "./DiaryMain";
 import { useEffect, useState } from "react";
-function Diary(props) {
-  const [diary, setDiary] = useState(
-    () => obj || JSON.parse(localStorage.getItem("diary"))
-  );
 
+function Diary(props) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [feelingEmoji, setFeelingEmoji] = useState("img/feeling/happy.png");
+  const [feelingEmoji, setFeelingEmoji] = useState("img/feeling/empty.png");
   const [weatherEmoji, setWeatherEmoji] = useState("img/weather/sun.png");
-  const [currentDiary, setCurrentDiary] = useState(obj[0]);
+  const [currentDiary, setCurrentDiary] = useState(props.obj[0]);
 
   useEffect(() => {
-    localStorage.setItem("diary", JSON.stringify(diary));
-  }, [diary]);
+    localStorage.setItem("diary", JSON.stringify(props.diary));
+  }, [props.diary]);
   return (
     <>
       <Header />
@@ -26,8 +23,8 @@ function Diary(props) {
           setFeelingEmoji={setFeelingEmoji}
           weatherEmoji={weatherEmoji}
           setWeatherEmoji={setWeatherEmoji}
-          diary={diary}
-          setDiary={setDiary}
+          diary={props.diary}
+          setDiary={props.setDiary}
           currentDiary={currentDiary}
         />
         <DiaryMain
@@ -35,8 +32,8 @@ function Diary(props) {
           setTitle={setTitle}
           text={text}
           setText={setText}
-          setDiary={setDiary}
-          diary={diary}
+          setDiary={props.setDiary}
+          diary={props.diary}
           feelingEmoji={feelingEmoji}
           weatherEmoji={weatherEmoji}
           currentDiary={currentDiary}
@@ -49,19 +46,3 @@ function Diary(props) {
 }
 
 export default Diary;
-
-const nowDate = new Date();
-const obj = [
-  {
-    ["day" + nowDate.getDate()]: {
-      feeling: "",
-      weather: "",
-      date:
-        String(nowDate.getFullYear()) +
-        String(nowDate.getMonth() + 1) +
-        +String(nowDate.getDate()),
-      diaryTitle: "",
-      diaryText: "",
-    },
-  },
-];

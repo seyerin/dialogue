@@ -6,17 +6,19 @@ import Weather from "./Weather";
 
 function DiaryHeader(props) {
   const diaryLength = props.diary.length;
-  const currentDate = "";
-  if (localStorage.getItem("currentDate")) {
-    currentDate = JSON.parse(localStorage.getItem("currentDate"))[2];
-  }
 
+  let currentDate = "";
+  if (localStorage.getItem("currentDate")) {
+    currentDate = JSON.parse(localStorage.getItem("currentDate"));
+  }
+  const diaryArr = JSON.parse(localStorage.getItem("diary"));
   const [feelingRemove, setFeelingRemove] = useState(true);
   const [weatherRemove, setWeatherRemove] = useState(true);
   const [feeling, setFeeling] = useState("img/feeling/empty.png");
   const [weather, setWeather] = useState("img/weather/sun.png");
 
   const changeFeeling = (e) => {
+    // console.log("a");
     setFeeling(e.target.src);
     props.setFeelingEmoji(e.target.src);
 
@@ -28,8 +30,8 @@ function DiaryHeader(props) {
         props.setDiary((prev) => {
           let temp = [...prev];
           temp[i][Object.keys(props.diary[i])].feeling = e.target.src;
-          console.log(temp);
-          return prev;
+          // console.log(temp);
+          return temp;
         });
         break;
       }
@@ -47,8 +49,7 @@ function DiaryHeader(props) {
         props.setDiary((prev) => {
           let temp = [...prev];
           temp[i][Object.keys(props.diary[i])].weather = e.target.src;
-          console.log(temp);
-          return prev;
+          return temp;
         });
         break;
       }
@@ -58,27 +59,37 @@ function DiaryHeader(props) {
   const feelingArr = ["happy", "angry", "sad", "soso", "sick", "tired"];
   const weatherArr = ["sun", "cloud", "rain", "snow"];
   const nowDate = new Date();
+  let count = 0;
+  let count2 = 0;
   return (
     <StyleDiaryHeader className="inpo">
       <div className="feelingBox">
         <div className="curruntFeeling">
           <p className="todayFeeling">오늘의 기분 :</p>
           <img
-            src={props.diary
-              .map((x) => {
-                if (x[Object.keys(x)].feeling != "") {
-                  if (
-                    String(Object.keys(x)) ==
-                    "day" +
-                      `${currentDate ? currentDate[2] : nowDate.getDate()}`
-                  ) {
-                    return x[Object.keys(x)].feeling;
-                  }
-                } else {
-                  return feeling;
-                }
-              })
-              .join("")}
+            src={
+              diaryArr
+                ? diaryArr
+                    .map((x) => {
+                      if (x[Object.keys(x)].feeling != "") {
+                        if (
+                          currentDate[2] ==
+                          String(Object.keys(x)).replace("day", "")
+                        ) {
+                          return x[Object.keys(x)].feeling;
+                        } else {
+                          count++;
+                          if (count == diaryArr.length) {
+                            return feeling;
+                          }
+                        }
+                      } else {
+                        return feeling;
+                      }
+                    })
+                    .join("")
+                : feeling
+            }
             alt=""
             onClick={() => {
               setFeelingRemove((prev) => !prev);
@@ -107,21 +118,29 @@ function DiaryHeader(props) {
         <div className="curruntweather">
           <p>날씨 : </p>
           <img
-            src={props.diary
-              .map((x) => {
-                if (x[Object.keys(x)].weather != "") {
-                  if (
-                    String(Object.keys(x)) ==
-                    "day" +
-                      `${currentDate ? currentDate[2] : nowDate.getDate()}`
-                  ) {
-                    return x[Object.keys(x)].weather;
-                  }
-                } else {
-                  return weather;
-                }
-              })
-              .join("")}
+            src={
+              diaryArr
+                ? diaryArr
+                    .map((x) => {
+                      if (x[Object.keys(x)].weather != "") {
+                        if (
+                          currentDate[2] ==
+                          String(Object.keys(x)).replace("day", "")
+                        ) {
+                          return x[Object.keys(x)].weather;
+                        } else {
+                          count2++;
+                          if (count2 == diaryArr.length) {
+                            return weather;
+                          }
+                        }
+                      } else {
+                        return weather;
+                      }
+                    })
+                    .join("")
+                : ""
+            }
             alt=""
             onClick={() => {
               setWeatherRemove((prev) => !prev);

@@ -1,27 +1,14 @@
 import { useEffect, useState } from "react";
 
 function DiaryMain(props) {
-  const currentDate = "";
+  let currentDate = "";
   if (localStorage.getItem("currentDate")) {
     currentDate = JSON.parse(localStorage.getItem("currentDate"))[2];
   }
-  // console.log(currentDate);
   const nowDate = new Date();
   const diaryLength = props.diary.length;
-  const obj = [
-    {
-      ["day" + new Date().getDate()]: {
-        feeling: "",
-        weather: "",
-        date:
-          String(nowDate.getFullYear()) +
-          String(nowDate.getMonth() + 1) +
-          +String(nowDate.getDate()),
-        diaryTitle: "",
-        diaryText: "",
-      },
-    },
-  ];
+  const [read, setRead] = useState(false);
+
   const savedDiary = () => {
     for (let i = 0; i < diaryLength; i++) {
       if (
@@ -29,31 +16,60 @@ function DiaryMain(props) {
         String(Object.keys(props.diary[i]))
       ) {
         props.setDiary((prev) => {
+          setRead(true);
           let temp = [...prev];
-          temp[i][Object.keys(props.diary[i])].feeling = props.feelingEmoji;
-          temp[i][Object.keys(props.diary[i])].weather = props.weatherEmoji;
-          temp[i][Object.keys(props.diary[i])].diaryTitle = props.title;
-          temp[i][Object.keys(props.diary[i])].diaryText = props.text;
+          if (props.feelingEmoji != "img/feeling/empty.png") {
+            temp[i][Object.keys(props.diary[i])].feeling = props.feelingEmoji;
+          }
+          if (props.title != "") {
+            temp[i][Object.keys(props.diary[i])].diaryTitle = props.title;
+          }
+          if (props.text != "") {
+            temp[i][Object.keys(props.diary[i])].diaryText = props.text;
+          }
+          if (props.weatherEmoji != "img/weather/sun.png") {
+            temp[i][Object.keys(props.diary[i])].weather = props.weatherEmoji;
+          }
           return temp;
         });
         break;
       } else {
+        // if()
         if (i == diaryLength - 1) {
           props.setDiary((prev) => {
-            let temp = [...prev];
+            let temp = JSON.parse(localStorage.getItem("diary"));
             temp.push(props.currentDiary);
             return temp;
           });
         }
       }
     }
+
+    //   fetch("http://diary", {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json ; charset=utf-8",
+    //       Accept: "*/*",
+    //       "Access-Control-Allow-Origin": "https://shoppingmallserver.fly.dev/",
+    //     },
+    //     body: JSON.stringify({
+    //       feeling: "feel",
+    //       weather: "I am testing!",
+    //       diaryTitle: "sssss",
+    //       diaryText: "aaaaaa",
+    //       date: "20231109",
+    //     }),
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => console.log("g"))
+    //     .catch((e) => console.log("f"));
   };
 
   useEffect(() => {
     props.setCurrentDiary((prev) => {
       let temp = { ...prev };
       temp = {
-        ["day" + nowDate.getDate()]: {
+        ["day" + `${currentDate ? currentDate : nowDate.getDate()}`]: {
           feeling: props.feelingEmoji,
           weather: props.weatherEmoji,
           date: 2023119,

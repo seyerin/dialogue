@@ -39,8 +39,7 @@ function CalenderMain(props) {
                                   .map((i) =>
                                     String(Object.keys(i)).replace("day", "") ==
                                       x.getDate() &&
-                                    x.getMonth() ==
-                                      props.curruentDate.getMonth()
+                                    x.getMonth() == props.currentDate.getMonth()
                                       ? i[Object.keys(i)].feeling
                                           .substring(34)
                                           .replace(".png", "")
@@ -60,8 +59,7 @@ function CalenderMain(props) {
                                   .map((i) =>
                                     String(Object.keys(i)).replace("day", "") ==
                                       x.getDate() &&
-                                    x.getMonth() ==
-                                      props.curruentDate.getMonth()
+                                    x.getMonth() == props.currentDate.getMonth()
                                       ? i[Object.keys(i)].diaryTitle != ""
                                         ? "title"
                                         : ""

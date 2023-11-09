@@ -8,9 +8,9 @@ function Calender(props) {
   const nowDate = new Date();
   const [nextMonth, setNextMonth] = useState(0);
   const [prevMonth, setPreveMonth] = useState(1);
-  const [curruentDate, setCurrentDate] = useState(nowDate);
-  const nowYears = curruentDate.getFullYear();
-  const nowMonth = curruentDate.getMonth();
+  const [currentDate, setCurrentDate] = useState(nowDate);
+  const nowYears = currentDate.getFullYear();
+  const nowMonth = currentDate.getMonth();
   const monthStart = new Date(nowYears, nowMonth + nextMonth, 1).getDay();
   const monthEnd = new Date(nowYears, nowMonth + prevMonth, 0);
   const endDay = monthEnd.getDate();
@@ -41,9 +41,9 @@ function Calender(props) {
 
   function getClassName(x) {
     if (
-      x.getDate() == curruentDate.getDate() &&
+      x.getDate() == currentDate.getDate() &&
       nextMonth == 0 &&
-      x.getMonth() == curruentDate.getMonth()
+      x.getMonth() == currentDate.getMonth()
     ) {
       return "today";
     } else if (x.getDay() == 0) {
@@ -67,7 +67,7 @@ function Calender(props) {
           days={days}
           rows={rows}
           getClassName={getClassName}
-          curruentDate={curruentDate}
+          currentDate={currentDate}
           nextMonth={nextMonth}
         />
       </Main>
