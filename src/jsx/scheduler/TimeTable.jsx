@@ -1,7 +1,6 @@
-import Table from "../../css/scheduler/StyleTimeData";
 function TimeTable(props) {
   return (
-    <Table
+    <div
       className={"timeData unClick"}
       ref={(ref) => (props.data[props.x] = ref)}
       onMouseDown={(e) => {
@@ -9,7 +8,6 @@ function TimeTable(props) {
         props.setStudyStart((prev) => {
           let temp = [...prev];
           temp.push(props.x);
-          // console.log(temp);
           return temp;
         });
       }}
@@ -17,13 +15,11 @@ function TimeTable(props) {
         props.setStudyEnd((prev) => {
           let temp = prev;
           temp.push(props.x);
-          // console.log(temp);
           return temp;
         });
         props.timeFunc();
-        // props.setFlag(true);
       }}
-    ></Table>
+    ></div>
   );
 }
 

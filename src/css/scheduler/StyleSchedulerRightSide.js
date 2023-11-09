@@ -31,8 +31,16 @@ const Style = styled.div`
     width: 100%;
     height: 23px;
     border-bottom: 1px solid black;
-    border-right: 1px solid black;
     text-align: center;
+  }
+  .timeTitle div::after {
+    content: "";
+    display: block;
+    width: 99%;
+    height: 24px;
+    border-right: 1px solid black;
+    position: relative;
+    bottom: 3.2vh;
   }
   .timeTable {
     width: 80%;
@@ -46,6 +54,7 @@ const Style = styled.div`
     height: 23px;
     border-bottom: 1px solid black;
     position: relative;
+    /* z-index: 1; */
   }
   .timeData::after {
     content: "";
@@ -54,17 +63,17 @@ const Style = styled.div`
     display: block;
     border-right: 1px solid black;
     position: absolute;
-    top: 2.5vh;
+    top: 2vh;
     z-index: 2;
   }
   .timeData:nth-child(6n + 0)::after {
     display: none;
   }
   .unClick:hover {
-    background-color: gray;
+    background-color: #a6a6a6;
   }
   .click {
-    background-color: rgb(58, 58, 58);
+    background-color: #cbcbfa;
   }
 `;
 

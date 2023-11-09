@@ -8,7 +8,7 @@ const Detail = styled.div`
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 30vh;
+  top: 35vh;
   background-color: white;
 
   .dateBox {

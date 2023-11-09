@@ -6,8 +6,6 @@ function SchedulerLeftSide(props) {
   const allFocus = {};
   const data = useRef([]);
 
-  // console.log(new Date().getDate());
-
   useEffect(() => {
     props.setScheduler((prev) => {
       let temp = [...prev];
@@ -24,13 +22,12 @@ function SchedulerLeftSide(props) {
   ];
 
   let checkRef = useRef([]);
-  // console.log(checkRef);
   return (
     <LeftSide className="schedulerSection">
       <form className="schedulerForm" action="">
         <div className="leftSideHeader">
           <div className="date">
-            <span>날짜:</span>
+            <span className="dateTitle">날짜:</span>
             <span>{new Date().getFullYear()}.</span>
             <span>{new Date().getMonth() + 1}.</span>
             <span>{new Date().getDate()}</span>
@@ -51,6 +48,7 @@ function SchedulerLeftSide(props) {
               <SubjectData
                 key={x}
                 class={x}
+                subject={props.subject}
                 setSubject={props.setSubject}
                 setSubjectPlan={props.setSubjectPlan}
                 subjectPlan={props.subjectPlan}

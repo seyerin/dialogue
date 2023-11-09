@@ -12,27 +12,27 @@ const Td = styled.td`
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
   }
   .diaryInfo {
-    width: 100%;
-    height: 60%;
+    width: 40%;
+    height: 31%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
   }
   .feelingColor {
-    width: 85%;
-    height: 25%;
+    margin: 0 0.5vw 0 0.5vw;
+    width: 0.6vw;
+    height: 0.6vw;
+    border-radius: 100%;
   }
   .diaryTitle {
-    width: 85%;
-    height: 25%;
+    margin: 0 0.5vw 0 0.5vw;
+    width: 0.6vw;
+    height: 0.6vw;
+    border-radius: 100%;
   }
 
   .angry,
@@ -42,10 +42,11 @@ const Td = styled.td`
   .sad,
   .happy,
   .title {
-    border: 1px solid black;
+    /* border: 1px solid black; */
   }
   .title {
-    background-color: #e0e0e0;
+    background-color: #b5b5b5;
+    /* border: 1px solid black; */
   }
   .angry {
     background-color: #ff0000;

@@ -117,10 +117,9 @@ function Scheduler() {
 
   useEffect(() => {
     localStorage.setItem("scheduler", JSON.stringify(scheduler));
-  }, [scheduler]);
+  }, [scheduler, studyStart, studyEnd]);
 
   useEffect(() => {
-    // console.log(scheduler);
     scheduler[0]["day" + new Date().getDate()].studyPlan.subject.map((x) => {
       subjectRef.current.push(x);
     });

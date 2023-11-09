@@ -7,7 +7,7 @@ function CalenderMain(props) {
 
   const diaryArr = JSON.parse(localStorage.getItem("diary"));
   const [currentNum, setCurrentNum] = useState(0);
-
+  let count = 0;
   return (
     <>
       <table>
@@ -62,11 +62,11 @@ function CalenderMain(props) {
                                     x.getMonth() == props.currentDate.getMonth()
                                       ? i[Object.keys(i)].diaryTitle != ""
                                         ? "title"
-                                        : ""
+                                        : "remove"
                                       : ""
                                   )
                                   .join("")
-                              : ""
+                              : "remove"
                           }`
                         }
                       ></div>

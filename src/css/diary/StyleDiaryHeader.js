@@ -19,7 +19,6 @@ const StyleDiaryHeader = styled.section`
     justify-content: center;
     align-items: center;
     position: relative;
-    /* background-color: yellowgreen; */
   }
   .curruntFeeling {
     width: 100%;
@@ -28,11 +27,6 @@ const StyleDiaryHeader = styled.section`
     justify-content: space-between;
     align-items: center;
   }
-  /* .defaultBox img {
-    width: 45px;
-    height: 45px;
-    z-index: 2;
-  } */
   .feeling {
     width: 12vw;
     height: 17vh;
@@ -85,7 +79,7 @@ const StyleDiaryHeader = styled.section`
     justify-content: space-between;
     align-items: center;
   }
-  .curruntWhether img {
+  .curruntWeather img {
     margin-top: 0.5vh;
   }
   .weather {

@@ -36,7 +36,6 @@ function DiaryMain(props) {
         });
         break;
       } else {
-        // if()
         if (i == diaryLength - 1) {
           props.setDiary((prev) => {
             let temp = JSON.parse(localStorage.getItem("diary"));
@@ -44,18 +43,6 @@ function DiaryMain(props) {
             return temp;
           });
         }
-        // fetch("http://localhost:3000/main/diary", {
-        //   method: "post",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     feeling: "feel",
-        //   }),
-        // })
-        //   .then((response) => response.json())
-        //   .then((data) => console.log("g"))
-        //   .catch((e) => console.log("f"));
       }
     }
   };

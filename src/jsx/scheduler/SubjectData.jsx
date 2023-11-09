@@ -27,12 +27,14 @@ function SubjectData(props) {
         });
       }
       if (props.focusCounter <= 21) {
-        props.allFocus[props.focusCounter].children[0].children[
-          `${e.target.className == "subject" ? 1 : 0}`
-        ].focus();
-      }
-      if (e.target.className == "subject") {
-        props.setFocusCounter((prev) => prev + 1);
+        if (e.target.className == "subject") {
+          props.allFocus[props.focusCounter].children[0].children[1].focus();
+        } else {
+          props.allFocus[
+            props.focusCounter + 1
+          ].children[0].children[0].focus();
+          props.setFocusCounter((prev) => prev + 1);
+        }
       }
     }
   };
@@ -51,6 +53,9 @@ function SubjectData(props) {
           ref={(el) => (focus.current[0] = el)}
           onKeyPress={(e) => {
             addFunc(e);
+          }}
+          onClick={(e) => {
+            props.setFocusCounter(props.class);
           }}
           defaultValue={props.subjectRef != undefined ? props.subjectRef : ""}
         />
@@ -72,16 +77,13 @@ function SubjectData(props) {
         type="checkbox"
         className={"class" + props.class}
         onClick={(e) => {
-          // setClick((prev) => !prev);
           props.setComplete((prev) => {
             let temp = [...prev];
             temp[props.class] = `${temp[props.class] == "true" ? false : true}`;
-            // console.log(temp);
             return temp;
           });
-          // e.target.checked = ;
         }}
-        disabled={props.subjectPlan.length >= props.class ? false : true}
+        disabled={props.subject.length >= props.class ? false : true}
       />
     </StyleSubjectData>
   );

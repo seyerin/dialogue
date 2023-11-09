@@ -23,18 +23,8 @@ const LeftSide = styled.div`
     border-bottom: 1px solid black;
     font-size: 16px;
   }
-  .date input {
-    width: 2vw;
-    height: 3vh;
-    font-size: 15px;
-    text-align: center;
-    border: none;
-    outline: none;
-    background-color: rgba(240, 248, 255, 0);
-  }
-  .date input:nth-child(2) {
-    margin-left: 0.5vw;
-    width: 3vw;
+  .dateTitle {
+    margin-right: 0.5vw;
   }
   textarea {
     padding: 0.5vw 0.5vw 0.5vw 1vw;

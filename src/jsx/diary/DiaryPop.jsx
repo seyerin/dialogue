@@ -29,6 +29,7 @@ const Div = styled.div`
   align-items: center;
   justify-content: space-evenly;
   position: absolute;
+  top: 15vh;
   background-color: white;
   z-index: 3;
 

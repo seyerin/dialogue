@@ -46,7 +46,6 @@ function CalenderDetail(props) {
                           props.currentNum
                         ) {
                           if (x[Object.keys(x)].feeling == "") {
-                            console.log("a");
                             return "img/feeling/empty.png";
                           } else {
                             return x[Object.keys(x)].feeling;
@@ -82,7 +81,6 @@ function CalenderDetail(props) {
                       } else {
                         count2++;
                         if (count2 == props.diaryArr.length) {
-                          console.log(y);
                           return "일기 쓰러 가기 ✏️✏️";
                         }
                       }

@@ -5,7 +5,6 @@ import { useState, useRef, useEffect } from "react";
 function SchedulerRightSide(props) {
   const data = useRef([]);
 
-  // console.log(props.studyStart);
   useEffect(() => {
     props.setScheduler((prev) => {
       let temp = prev;
@@ -14,8 +13,6 @@ function SchedulerRightSide(props) {
       temp[0]["day" + new Date().getDate()].studyTimeTable.end = props.studyEnd;
       temp[0]["day" + new Date().getDate()].studyTimeTable.time = props.time;
       temp[0]["day" + new Date().getDate()].studyTimeTable.count = props.count;
-      // console.log("state", props.scheduler);
-      // console.log(temp);
       return temp;
     });
   }, [props.time, props.setStudyEnd, props.setStudyStart, props.count]);

@@ -18,7 +18,6 @@ function DiaryHeader(props) {
   const [weather, setWeather] = useState("img/weather/sun.png");
 
   const changeFeeling = (e) => {
-    // console.log("a");
     setFeeling(e.target.src);
     props.setFeelingEmoji(e.target.src);
 
@@ -30,7 +29,6 @@ function DiaryHeader(props) {
         props.setDiary((prev) => {
           let temp = [...prev];
           temp[i][Object.keys(props.diary[i])].feeling = e.target.src;
-          // console.log(temp);
           return temp;
         });
         break;
