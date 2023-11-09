@@ -41,7 +41,7 @@ function CalenderMain(props) {
                                       x.getDate() &&
                                     x.getMonth() == props.currentDate.getMonth()
                                       ? i[Object.keys(i)].feeling
-                                          .substring(34)
+                                          .substring(38)
                                           .replace(".png", "")
                                       : ""
                                   )
