@@ -23,7 +23,7 @@ function Calender(props) {
   const rows = [[], [], [], [], [], []];
   let counter = 0;
   let counter2 = 0;
-  const date = ["SUN", "MON", "THU", "WED", "THRS", "FRI", "SET"];
+  const date = ["SUN", "MON", "THU", "WED", "THU", "FRI", "SET"];
   const days = [];
 
   for (let i = -monthStart + 1; i <= endDate + endDay; i++) {
