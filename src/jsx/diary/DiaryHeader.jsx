@@ -13,7 +13,7 @@ function DiaryHeader(props) {
   }
   const diaryArr = JSON.parse(localStorage.getItem("diary"));
   const [feelingRemove, setFeelingRemove] = useState(true);
-  const [weatherRemove, setWeatherRemove] = useState(true);
+  // const [weatherRemove, setWeatherRemove] = useState(true);
   const [feeling, setFeeling] = useState("img/feeling/empty.png");
   const [weather, setWeather] = useState("img/weather/sun.png");
 
@@ -53,6 +53,7 @@ function DiaryHeader(props) {
       }
     }
   };
+  console.log(diaryArr);
 
   const feelingArr = ["happy", "angry", "sad", "soso", "sick", "tired"];
   const weatherArr = ["sun", "cloud", "rain", "snow"];
@@ -76,6 +77,7 @@ function DiaryHeader(props) {
                           currentDate[2] ==
                           String(Object.keys(x)).replace("day", "")
                         ) {
+                          console.log("c");
                           return x[Object.keys(x)].feeling;
                         } else {
                           count2++;
@@ -84,6 +86,7 @@ function DiaryHeader(props) {
                           }
                         }
                       } else {
+                        console.log("a");
                         return feeling;
                       }
                     })
@@ -127,7 +130,10 @@ function DiaryHeader(props) {
                           currentDate[2] ==
                           String(Object.keys(x)).replace("day", "")
                         ) {
-                          return x[Object.keys(x)].weather;
+                          count++;
+                          if (count == diaryArr.length) {
+                            return x[Object.keys(x)].weather;
+                          }
                         } else {
                           count3++;
                           if (count3 == diaryArr.length) {
